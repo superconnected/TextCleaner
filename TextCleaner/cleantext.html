@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text Cleaner</title>
+</head>
+<body>
+	<textarea id="txt" rows="20" cols="120"></textarea><br>
+	<button id="btn">Clean</button>
+	
+	<script>
+		var btn = document.getElementById('btn'),
+			txt = document.getElementById('txt'),
+			acceptable = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:!.,?-_*&^%$#@+~`{}[]<>/\\|;=\r\n\"'() ".split('');
+			
+		btn.onclick = function() {
+			var input = txt.value;
+			
+			var output = [];
+			for(var i = 0; i < input.length; i++) {
+				if(acceptable.indexOf(input[i]) >= 0) {
+					output.push(input[i]);
+				}
+			}
+			txt.value = output.join('');
+			
+			alert('Cleaned!');
+			return false;
+		};
+	</script>
+</body>
+</html>
